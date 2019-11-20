@@ -1,11 +1,5 @@
 package com.example.test.Activities;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,6 +12,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.test.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -164,7 +164,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        Intent homeActivity = new Intent(getApplicationContext(), HomeActivity.class);
+        Intent homeActivity = new Intent(getApplicationContext(), Home.class);
         startActivity(homeActivity);
         finish();
     }

@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar progressLogin;
     private FirebaseAuth mAuth;
     private Intent HomeActivity;
-    private ImageView loginPhoto;
+    private Button btnRegister;
 
 
     @Override
@@ -41,8 +41,8 @@ public class LoginActivity extends AppCompatActivity {
         progressLogin= findViewById(R.id.login_progress);
         mAuth = FirebaseAuth.getInstance();
         HomeActivity = new Intent(this, com.example.test.Activities.Home.class);
-        loginPhoto = findViewById(R.id.login_photo);
-        loginPhoto.setOnClickListener(new View.OnClickListener() {
+        btnRegister = findViewById(R.id.register_btn);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent registerActivity = new Intent(getApplicationContext(), RegisterActivity.class);

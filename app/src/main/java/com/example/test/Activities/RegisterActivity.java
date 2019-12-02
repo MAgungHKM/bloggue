@@ -116,7 +116,12 @@ public class RegisterActivity extends AppCompatActivity {
                             // user account created successfully
                             showMassage("Account created");
                             // after we create the user account we need to update his profile picture and name
-                            updateUserInfo(name, pickedImageUri, mAuth.getCurrentUser());
+
+                            if(pickedImageUri != null) {
+                                updateUserInfo(name, pickedImageUri, mAuth.getCurrentUser());
+                            }else {
+                                updateUserInfoWithoutPhoto(name, mAuth.getCurrentUser());
+                            }
                         }else{
                             // account creation failed
                             showMassage("Account creation failed");
@@ -161,6 +166,24 @@ public class RegisterActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private void updateUserInfoWithoutPhoto(final String name, final FirebaseUser currentUser) {
+        UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
+                .setDisplayName(name)
+                .build();
+
+        currentUser.updateProfile(profileUpdate)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            // user info updated successfully
+                            showMassage("Register Complete");
+                            updateUI();
+                        }
+                    }
+                });
     }
 
     private void updateUI() {

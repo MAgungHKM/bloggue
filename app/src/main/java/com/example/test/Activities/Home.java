@@ -208,14 +208,23 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     String imageDownloadLink = uri.toString();
+                                    if(currentUser.getPhotoUrl() != null){
+                                        Post post = new Post ( popupTitle.getText().toString(),
+                                                popupDescription.getText().toString(),
+                                                imageDownloadLink,
+                                                currentUser.getUid(),
+                                                currentUser.getPhotoUrl().toString());
 
-                                    Post post = new Post ( popupTitle.getText().toString(),
-                                                        popupDescription.getText().toString(),
-                                                        imageDownloadLink,
-                                                        currentUser.getUid(),
-                                                        currentUser.getPhotoUrl().toString());
+                                        addPost(post);
+                                    }else{
+                                        Post post = new Post ( popupTitle.getText().toString(),
+                                                popupDescription.getText().toString(),
+                                                imageDownloadLink,
+                                                currentUser.getUid(),
+                                                null);
 
-                                    addPost(post);
+                                        addPost(post);
+                                    }
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -305,7 +314,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         //use glide to load user image
         //import library
 
-        Glide.with(this).load(currentUser.getPhotoUrl()).into(navUserPhot);
+        if (currentUser.getPhotoUrl() != null){
+            Glide.with(this).load(currentUser.getPhotoUrl()).into(navUserPhot);
+        }else{
+            Glide.with(this).load(R.drawable.userphoto).into(navUserPhot);
+        }
 
 
     }

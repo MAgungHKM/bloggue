@@ -147,7 +147,7 @@
         android:layout_width="64dp"
         android:layout_height="65dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/reg_btn_style"
+        android:background="@drawable/userphoto"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

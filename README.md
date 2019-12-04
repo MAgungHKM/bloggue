@@ -9,4 +9,5 @@ Aplikasi ini dikembangkan oleh:
 * Agung
 * Ardi
 * Ariel
+* Farhan
 * Khairi
